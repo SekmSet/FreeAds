@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes(['verify' => true]);
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', 'IndexController@showIndex');
+
+Route::get('/profil', 'IndexController@profilAction')->middleware('verified')->name('showProfil');
+Route::post('/profil', 'IndexController@putUpdateUser')->middleware('verified')->name('putProfil');
