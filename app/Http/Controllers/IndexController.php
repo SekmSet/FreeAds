@@ -30,8 +30,9 @@ class IndexController extends Controller
         $telephone = $request->get('telephone');
         $sexe = $request->get('sexe');
         $pseudo  = $request->get('pseudo');
-        $nom  = $request->get('nom');
+        $name  = $request->get('name');
         $email  = $request->get('email');
+        $password  = $request->get('password');
 
 
         /*
@@ -55,11 +56,14 @@ class IndexController extends Controller
             $user->pseudo = $pseudo;
         }
 
-        if( $nom != '' ){
-            $user->nom = $nom;
+        if( $name != '' ){
+            $user->name = $name;
         }
         if( $email != '' ){
             $user->email = $email;
+        }
+        if( $password != '' ){
+            $user->password = $password;
         }
 
         $user->save();

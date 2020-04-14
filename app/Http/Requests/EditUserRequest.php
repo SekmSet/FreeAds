@@ -24,11 +24,12 @@ class EditUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'pseudo' => [ 'max:10'],
-            'telephone' => [],
-            'sexe' => [ 'max:1'],
-            'nom' => [],
-            'email' => ['email:rfc,dns'],
+            'pseudo' => [ 'string','nullable','max:10'],
+            'telephone' => ['string','nullable','digits:10'],
+            'sexe' => [ 'string','nullable','max:1'],
+            'name' => ['string','nullable','min:2'],
+            'email' => ['string','nullable','email:rfc,dns'],
+            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
         ];
     }
 
