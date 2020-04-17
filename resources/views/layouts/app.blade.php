@@ -36,6 +36,17 @@
                         </li>
                     </ul>
 
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('article.create')}}">Poster une annonce</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Messagerie</a>
+                        </li>
+                    </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -78,6 +89,5 @@
     </div>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
 </body>
 </html>
