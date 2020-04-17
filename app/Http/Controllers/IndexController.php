@@ -11,10 +11,19 @@ class IndexController extends Controller
 {
     public function showIndex(){
         return view('index');
-
     }
 
     public function profilAction(){
+        $user = Auth::user();
+
+        return view('auth.change_profil', [
+            'user' => $user
+        ]);
+//        return redirect()->route('editProfil');
+
+    }
+
+    public function showAction(){
         $user = Auth::user();
 
         return view('auth.profil', [

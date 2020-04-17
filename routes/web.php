@@ -21,6 +21,13 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'IndexController@showIndex');
+Route::get('/profil', 'IndexController@showAction')->middleware('verified')->name('showProfil');
 
-Route::get('/profil', 'IndexController@profilAction')->middleware('verified')->name('showProfil');
-Route::post('/profil', 'IndexController@putUpdateUser')->middleware('verified')->name('putProfil');
+Route::get('/profil/edit', 'IndexController@profilAction')->middleware('verified')->name('editProfil');
+Route::post('/profil/edit', 'IndexController@putUpdateUser')->middleware('verified')->name('EditProfil');
+
+//Route::get('/article', 'ArticlesController@showArticle')->middleware('verified')->name('listArticle');
+//Route::get('/article/add', 'ArticlesController@createArticle')->middleware('verified')->name('newArticle');
+//Route::post('/article/add', 'ArticlesController@putArticle')->middleware('verified')->name('NewArticle');
+
+Route::resource('/article','ArticleController');

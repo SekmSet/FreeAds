@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Mon profil</div>
+                    <div class="card-header">ARTICLES</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -14,7 +14,16 @@
                             </div>
                         @endif
 
-                        You are logged in!
+                            @foreach ($articles as $article)
+                                <p>{{ $article->title}}</p>
+                                 <p>{{ $article->price}}€</p>
+
+                                <ul>
+                                    <li><a href="{{route('article.show',['article' =>$article->id])}}">See more</a></li>
+                                </ul>
+                                <hr>
+                            @endforeach
+
                     </div>
                 </div>
             </div>
