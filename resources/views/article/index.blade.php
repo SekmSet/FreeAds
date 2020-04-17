@@ -89,6 +89,7 @@
                                 </ul>
                                 <hr>
                             @endforeach
+                            {{ $articles->links() }}
 
                     </div>
                 </div>

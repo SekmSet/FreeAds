@@ -27,7 +27,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $all_article = Article::all();
+        $all_article = Article::paginate(15);
         return view('article.index',[
             'articles' => $all_article
         ]);
