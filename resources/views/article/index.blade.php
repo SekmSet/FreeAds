@@ -23,7 +23,6 @@
                             @endforeach
                         </select>
                     </div>
-
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="searchTitle">
@@ -32,8 +31,8 @@
 
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="searchLocalisation">
-                                <input type="text" id="searchLocalisation" name="searchLocalisation" class="form-control" placeholder="Saisissez une ville">
+                            <label for="searchCity">
+                                <input type="text" id="searchCity" name="searchCity" class="form-control" placeholder="Saisissez une ville">
                             </label>
                         </div>
                     </div>
@@ -41,14 +40,14 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label for="searchPriceMin">
-                                <input class="custom-range" type="range" id="searchPriceMin" name="searchPriceMin" min="0" max="1000">Prix min.</label>
+                                <input class="custom-range" type="range" id="searchPriceMin" name="searchPriceMin" min="0" max="1000" value="0">Prix min.</label>
                             <span id="val_price_min"></span>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-12">
-                            <label for="searchPriceMax"><input class="custom-range" type="range" id="searchPriceMax" name="searchPriceMax" min="1" max="1000">Prix max.</label>
+                            <label for="searchPriceMax"><input class="custom-range" type="range" id="searchPriceMax" name="searchPriceMax" min="1" max="1000" value="1000">Prix max.</label>
                             <span id="val_price_max"></span>
                         </div>
                     </div>
@@ -61,17 +60,36 @@
                         </label>
                     </div>
 
+                    <hr>
+
+                    <div class="form-group">
+                        <label for="orer-select" class="orderBy">Trier par</label>
+                        <select class="form-control" name="order" id="orer-select">
+                            <option value="">--Please choose an option--</option>
+                            <option value="orderByPriceAsc">Prix croissant</option>
+                            <option value="orderByPriceDesc">Prix décroissant</option>
+                            <option value="orderByDateAsc">Date croissant</option>
+                            <option value="orderByDateDesc">Date décroissant</option>
+                            <option value="orderByTitleAsc">Titre croissant</option>
+                            <option value="orderByTitleDesc">Titre décroissant</option>
+                        </select>
+                    </div>
+
+                    <hr>
+
                     <div class="form-group row">
                         <div class="col-sm-12">
                             <button type="submit" class="btn btn-primary">Rechercher</button>
                         </div>
                     </div>
-                 </form>
 
-                <ul>
-                    <li><a href="{{route('article.create')}}">Déposer une annonce</a></li>
-                </ul>
+                    <hr>
 
+                    <ul id="newArticle">
+                        <li><a href="{{route('article.create')}}">Déposer une annonce</a></li>
+                    </ul>
+                </form>
+                <hr>
                 <div class="card">
                     <div class="card-header">ARTICLES</div>
                     <div class="card-body">

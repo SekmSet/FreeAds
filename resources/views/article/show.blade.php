@@ -5,15 +5,14 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">ARTICLES</div>
-
+                    <div class="card-header"> <h2 id="title_article">{{ $article->title}}</h2></div>
                     <div class="card-body">
-                        @if (session('status'))
+                        <span id="user_article">{{ $article->users->name}}</span>
+                    @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
                         @endif
-
                             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
                                     @foreach($article->images as $key => $image)
@@ -36,14 +35,13 @@
                                     <span class="sr-only">Next</span>
                                 </a>
                             </div>
-
-                        <p>{{ $article->title}}</p>
-                        <p>{{ $article->price}}€</p>
-                        <p>{{ $article->resum}}</p>
-                        <p>Couleur : {{ $article->name}}</p>
-                        <p>Localisation : {{ $article->city}}</p>
-                        <p>Date de mise en ligne : {{ $article->created_at}}</p>
-                        <p>Date de la dernière modifiction : {{ $article->updated_at}}</p>
+                        <p><span class="span_info">Prix :</span> {{ $article->price}} €</p>
+                        <p><span class="span_info">Description de l'article :</span>  <br> {{ $article->resum}}</p>
+                        <p><span class="span_info">Couleur :</span>  {{ $article->colors->name}}</p>
+                        <p><span class="span_info">Theme :</span>  {{ $article->themes->name}}</p>
+                        <p><span class="span_info">Localisation :</span>  {{ $article->city}}</p>
+                        <p><span class="span_info">Date de mise en ligne :</span>  {{ $article->created_at}}</p>
+                        <p><span class="span_info">Date de la dernière modifiction :</span> {{ $article->updated_at}}</p>
 
                         @can('delete', $article)
                             <form method="post" action="{{route('article.destroy',['article'=> $article -> id])}}">

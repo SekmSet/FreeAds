@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Nouvelle annonce') }}</div>
+                    <div class="card-header"><h2>{{ __('Nouvelle annonce') }}</h2></div>
                     <div class="card-body">
                         <form method="post" action="{{route('article.store')}}" enctype="multipart/form-data">
                             @csrf

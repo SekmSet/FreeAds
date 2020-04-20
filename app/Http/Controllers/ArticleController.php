@@ -192,12 +192,13 @@ class ArticleController extends Controller
         $colors = Color::all();
 
         $titre = $request->get("searchTitle");
-        $localisation = $request->get("searchLocalisation");
         $searchOnly = $request->get("searchOnly");
         $searchPriceMin = $request->get("searchPriceMin");
         $searchPriceMax = $request->get("searchPriceMax");
         $color = $request->get("color");
         $theme = $request->get("theme");
+        $city = $request->get("searchCity");
+        $order = $request->get("order");
 
         $query = Article::query();
 
@@ -208,14 +209,9 @@ class ArticleController extends Controller
                  ->where('title','like', "%$titre%")
                  ->orWhere('resum','like',"%$titre%");
         }
-
         if(!empty($searchPriceMin) &&!empty($searchPriceMax)){
             $query = $query
                 ->whereBetween('price',[$searchPriceMin,$searchPriceMax]);
-        }
-        if(!empty($localisation)){
-            $query = $query
-                ->where('localisation',$localisation);
         }
         if(!empty($color)){
             $query = $query
@@ -225,9 +221,43 @@ class ArticleController extends Controller
             $query = $query
                 ->where('theme_id',$theme);
         }
+        if(!empty($city)){
+            $query = $query
+                ->where('city','like', "%$city%");
+        }
+        if(!empty($order)) {
+            switch ($order) {
+                case 'orderByPriceAsc':
+                    $query = $query
+                        ->orderBy('price','ASC');
+                    break;
+                case 'orderByPriceDesc':
+                    $query = $query
+                        ->orderBy('price','DESC');
+                    break;
+                case 'orderByDateAsc':
+                    $query = $query
+                        ->orderBy('created_at','ASC');
+                    break;
+                case 'orderByDateDesc':
+                    $query = $query
+                        ->orderBy('created_at','DESC');
+                    break;
+                case 'orderByTitleAsc':
+                    $query = $query
+                        ->orderBy('title','ASC');
+                    break;
+                case 'orderByTitleDesc':
+                    $query = $query
+                        ->orderBy('title','DESC');
+                    break;
+                default :
+                    return;
+            }
+        }
 
-        return view('article.search',[
-            'results' => $query->paginate(15),
+        return view('article.index',[
+            'articles' => $query->paginate(15),
             'themes' => $themes,
             'colors' => $colors
         ]);

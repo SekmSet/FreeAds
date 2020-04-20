@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Modifier mon annonce') }}</div>
+                    <div class="card-header"><h2>{{ __('Modifier mon annonce') }}</h2></div>
                     <div class="card-body">
                         <form method="post" action="{{route('article.update',['article'=> $article->id])}}" enctype="multipart/form-data">
                             @csrf
