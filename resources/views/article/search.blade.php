@@ -41,14 +41,14 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label for="searchPriceMin">
-                                <input class="custom-range" type="range" id="searchPriceMin" name="searchPriceMin" min="0" max="1000">Prix min.</label>
+                                <input class="custom-range" type="range" id="searchPriceMin" name="searchPriceMin" min="1" max="1000" value="1" >Prix min.</label>
                             <span id="val_price_min"></span>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-12">
-                            <label for="searchPriceMax"><input class="custom-range" type="range" id="searchPriceMax" name="searchPriceMax" min="1" max="1000">Prix max.</label>
+                            <label for="searchPriceMax"><input class="custom-range" type="range" id="searchPriceMax" name="searchPriceMax" min="1" max="1000" value="1000">Prix max.</label>
                             <span id="val_price_max"></span>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                             <button type="submit" class="btn btn-primary">Rechercher</button>
                         </div>
                     </div>
-                 </form>
+                </form>
 
                 <ul>
                     <li><a href="{{route('article.create')}}">Déposer une annonce</a></li>
@@ -81,16 +81,16 @@
                             </div>
                         @endif
 
-                            @foreach ($articles as $article)
-                                <p>{{ $article->title}}</p>
-                                 <p>{{ $article->price}}€</p>
+                        @foreach ($results as $result)
+                            <p>{{ $result->title}}</p>
+                            <p>{{ $result->price}}€</p>
 
-                                <ul>
-                                    <li><a href="{{route('article.show',['article' =>$article->id])}}">See more</a></li>
-                                </ul>
-                                <hr>
-                            @endforeach
-                            {{ $articles->links() }}
+                            <ul>
+                                <li><a href="{{route('article.show',['article' =>$result->id])}}">See more</a></li>
+                            </ul>
+                            <hr>
+                        @endforeach
+                        {{ $results->links() }}
 
                     </div>
                 </div>

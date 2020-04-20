@@ -23,5 +23,6 @@ $factory->define(Article::class, function (Faker $faker) {
         'title' => $faker->name,
         'resum' => $faker->text(200),
         'price' => $faker->numberBetween(1,1000),
+        'city' => $faker->city
     ];
 });

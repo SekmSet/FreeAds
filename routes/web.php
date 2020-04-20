@@ -16,18 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/home', 'IndexController@showIndex');
+Route::get('/', 'ArticleController@index');
 Route::get('/profil', 'IndexController@showAction')->middleware('verified')->name('showProfil');
 
 Route::get('/profil/edit', 'IndexController@profilAction')->middleware('verified')->name('editProfil');
 Route::post('/profil/edit', 'IndexController@putUpdateUser')->middleware('verified')->name('EditProfil');
 
-//Route::get('/article', 'ArticlesController@showArticle')->middleware('verified')->name('listArticle');
-//Route::get('/article/add', 'ArticlesController@createArticle')->middleware('verified')->name('newArticle');
-//Route::post('/article/add', 'ArticlesController@putArticle')->middleware('verified')->name('NewArticle');
+Route::get('/article/search', 'ArticleController@searchAction')->name('searchArticle');
 
 Route::resource('/article','ArticleController');

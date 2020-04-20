@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Color;
 use App\Http\Requests\CreateArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Image;
+use App\Theme;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use \Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
@@ -16,7 +18,7 @@ class ArticleController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('verified')->except(['index','show']);
+        $this->middleware('verified')->except(['index','show','searchAction']);
     }
 
 
@@ -27,9 +29,14 @@ class ArticleController extends Controller
      */
     public function index()
     {
+        $themes = Theme::all();
+        $colors = Color::all();
+
         $all_article = Article::paginate(15);
         return view('article.index',[
-            'articles' => $all_article
+            'articles' => $all_article,
+            'themes' => $themes,
+            'colors' => $colors
         ]);
     }
 
@@ -155,5 +162,55 @@ class ArticleController extends Controller
         }
         $article->delete();
 
-        return redirect()->route('article.index');    }
+        return redirect()->route('article.index');
+    }
+
+    public function searchAction(Request $request){
+
+        $themes = Theme::all();
+        $colors = Color::all();
+
+        $titre = $request->get("searchTitle");
+        $localisation = $request->get("searchLocalisation");
+        $searchOnly = $request->get("searchOnly");
+        $searchPriceMin = $request->get("searchPriceMin");
+        $searchPriceMax = $request->get("searchPriceMax");
+        $color = $request->get("color");
+        $theme = $request->get("theme");
+
+        $query = Article::query();
+
+        if( !empty($searchOnly) && !empty($titre) ){
+            $query = $query->where('title', 'like',"%$titre%");
+        } elseif (!empty($titre)){
+             $query = $query
+                 ->where('title','like', "%$titre%")
+                 ->orWhere('resum','like',"%$titre%");
+        }
+
+        if(!empty($searchPriceMin) &&!empty($searchPriceMax)){
+            $query = $query
+                ->whereBetween('price',[$searchPriceMin,$searchPriceMax]);
+        }
+        if(!empty($localisation)){
+            $query = $query
+                ->where('localisation',$localisation);
+        }
+        if(!empty($color)){
+            $query = $query
+                ->where('color_id',$color);
+        }
+        if(!empty($theme)){
+            $query = $query
+                ->where('theme_id',$theme);
+        }
+
+
+
+        return view('article.search',[
+            'results' => $query->paginate(15),
+            'themes' => $themes,
+            'colors' => $colors
+        ]);
+    }
 }

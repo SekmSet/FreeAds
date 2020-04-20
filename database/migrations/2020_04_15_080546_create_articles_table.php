@@ -17,6 +17,7 @@ class CreateArticlesTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('resum');
+            $table->string('city');
             $table->float('price');
             $table->timestamps();
 
