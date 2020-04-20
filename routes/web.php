@@ -16,12 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
+Route::get('/', 'IndexController@indexAction')->name('home');
 
-Route::get('/', 'ArticleController@index');
-Route::get('/profil', 'IndexController@showAction')->middleware('verified')->name('showProfil');
-
-Route::get('/profil/edit', 'IndexController@profilAction')->middleware('verified')->name('editProfil');
-Route::post('/profil/edit', 'IndexController@putUpdateUser')->middleware('verified')->name('EditProfil');
+Route::get('/profil', 'Auth\ProfilController@showAction')->middleware('verified')->name('showProfil');
+Route::get('/profil/edit', 'Auth\ProfilController@profilAction')->middleware('verified')->name('editProfil');
+Route::post('/profil/edit', 'Auth\ProfilController@putUpdateUser')->middleware('verified')->name('EditProfil');
 
 Route::get('/article/search', 'ArticleController@searchAction')->name('searchArticle');
 

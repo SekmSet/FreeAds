@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Color;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Theme;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -42,6 +44,23 @@ class RegisterController extends Controller
     }
 
     /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showRegistrationForm()
+    {
+        $colors = Color::all();
+        $themes = Theme::all();
+
+        return view('auth.register',[
+            'colors' => $colors,
+            'themes'=>$themes
+        ]);
+    }
+
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -52,6 +71,9 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'city' => ['required', 'string', 'max:255',],
+            'colors' => ['required', 'string', 'max:255'],
+            'themes' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -67,6 +89,9 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'city' => $data['city'],
+            'colors' => $data['colors'],
+            'themes' => $data['themes'],
             'password' => Hash::make($data['password']),
         ]);
     }

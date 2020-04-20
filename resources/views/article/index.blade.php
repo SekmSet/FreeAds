@@ -99,17 +99,16 @@
                             </div>
                         @endif
 
-                            @foreach ($articles as $article)
-                                <p>{{ $article->title}}</p>
-                                 <p>{{ $article->price}}€</p>
+                        @foreach ($articles as $article)
+                            <p>{{ $article->title}}</p>
+                             <p>{{ $article->price}}€</p>
 
-                                <ul>
-                                    <li><a href="{{route('article.show',['article' =>$article->id])}}">See more</a></li>
-                                </ul>
-                                <hr>
-                            @endforeach
-                            {{ $articles->links() }}
-
+                            <ul>
+                                <li><a href="{{route('article.show',['article' =>$article->id])}}">See more</a></li>
+                            </ul>
+                            <hr>
+                        @endforeach
+                        {{ $articles->withQueryString()->links() }}
                     </div>
                 </div>
             </div>

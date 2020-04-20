@@ -25,10 +25,13 @@ class EditUserRequest extends FormRequest
     {
         return [
             'pseudo' => [ 'string','nullable','max:10'],
-            'telephone' => ['string','nullable','digits:10'],
+            'telephone' => ['string','nullable','min:10,14'],
             'sexe' => [ 'string','nullable','max:1'],
             'name' => ['string','nullable','min:2'],
             'email' => ['string','nullable','email:rfc,dns'],
+            'colors' => ['string','min :3'],
+            'themes' => ['string','min :3'],
+            'city' => ['string','min:3'],
             'password' => ['nullable', 'string', 'min:8', 'confirmed'],
         ];
     }
