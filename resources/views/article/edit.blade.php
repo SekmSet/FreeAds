@@ -12,7 +12,6 @@
                             @method('PUT')
                             <div class="form-group row">
                                 <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Titre') }}</label>
-
                                 <div class="col-md-6">
                                     <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ $article->title}}"  autocomplete="title" required autofocus>
                                     @error('title')
@@ -34,6 +33,43 @@
                                     </span>
                                     @enderror
                                 </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Ville') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{$article->city}}"  autocomplete="city" required autofocus>
+                                    @error('city')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <select name="theme" id="theme-select" class="form-control">
+                                    <option value="">--Please choose a theme--</option>
+                                    @foreach($themes as $theme)
+                                        <option value="{{$theme->id}}" @if ($theme->id === $article->theme_id)
+                                        selected
+                                            @endif
+                                        >{{$theme->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <select name="color" id="color-select" class="form-control">
+                                    <option value="">--Please choose a color--</option>
+                                    @foreach($colors as $color)
+                                        <option value="{{$color->id}}" @if ($color->id === $article->color_id)
+                                                selected
+                                            @endif
+                                            >{{$color->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="form-group row">

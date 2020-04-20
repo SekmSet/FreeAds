@@ -47,7 +47,15 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('article.create');
+        $themes = Theme::all();
+        $colors = Color::all();
+        $all_article = Article::all();
+
+        return view('article.create', [
+            'articles' => $all_article,
+            'themes' => $themes,
+            'colors' => $colors
+        ]);
     }
 
     /**
@@ -58,24 +66,31 @@ class ArticleController extends Controller
      */
     public function store(CreateArticleRequest $request)
     {
+
         $titre = $request->get('title');
         $price = $request->get('price');
         $resum = $request->get('resum');
+        $city = $request->get('city');
+        $color = $request->get('color');
+        $theme = $request->get("theme");
 
         $article = new Article;
         $article->title = $titre;
         $article->price = $price;
         $article->resum = $resum;
+        $article->city = $city;
+        $article->color_id = $color;
+        $article->theme_id = $theme;
         $article->user_id = Auth::id();
 
         $article->save();
 
         foreach($request->file('images') as $image) {
-            $name= time().$image->getClientOriginalName();
-            $image->move(public_path().'/upload/',$name);
+            $nameImage = time().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path().'/upload/',$nameImage);
             $imageModel= new Image;
             $imageModel->article_id = $article->id;
-            $imageModel->url = $name;
+            $imageModel->url = $nameImage;
             $imageModel->save();
         }
 
@@ -107,9 +122,13 @@ class ArticleController extends Controller
     public function edit(Article $article)
     {
         $this->authorize('update', $article);
+        $themes = Theme::all();
+        $colors = Color::all();
 
         return view('article.edit',[
-            'article' => $article
+            'article' => $article,
+            'themes' => $themes,
+            'colors' => $colors
         ]);
     }
 
@@ -129,14 +148,16 @@ class ArticleController extends Controller
         $price =  $request->get("price");
         $resum = $request->get("resum");
         $image = $request->get("image");
+        $city = $request->get("city");
+        $color = $request->get("color");
+        $theme = $request->get("theme");
         // TODO IMAGE
         $article->title = $titre;
         $article->price = $price;
         $article->resum = $resum;
-
-        print_r($titre);
-        print_r($price);
-        print_r($resum);
+        $article->city = $city;
+        $article->color_id = $color;
+        $article->theme_id = $theme;
 
         $article->save();
 
@@ -204,8 +225,6 @@ class ArticleController extends Controller
             $query = $query
                 ->where('theme_id',$theme);
         }
-
-
 
         return view('article.search',[
             'results' => $query->paginate(15),

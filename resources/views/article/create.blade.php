@@ -36,6 +36,53 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Ville') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}"  autocomplete="city" required autofocus>
+                                    @error('city')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="theme" class="col-md-4 col-form-label text-md-right">{{ __('Theme') }}</label>
+
+                                <div class="col-md-6">
+                                    <select name="theme" id="theme-select" class="form-control @error('theme') is-invalid @enderror">
+                                        @foreach($themes as $theme)
+                                            <option value="{{$theme->id}}">{{$theme->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('theme')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="color" class="col-md-4 col-form-label text-md-right">{{ __('Couleur') }}</label>
+
+                                <div class="col-md-6">
+                                    <select name="color" id="color-select" class="form-control @error('color') is-invalid @enderror">
+                                        @foreach($colors as $color)
+                                            <option value="{{$color->id}}">{{$color->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('color')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="resum" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
                                 <div class="col-md-6">
                                     <textarea class="form-control  @error('resum') is-invalid @enderror" id="resum" name="resum" rows="3" required>{{ old('resum') }}</textarea>

@@ -40,6 +40,8 @@
                         <p>{{ $article->title}}</p>
                         <p>{{ $article->price}}€</p>
                         <p>{{ $article->resum}}</p>
+                        <p>Couleur : {{ $article->name}}</p>
+                        <p>Localisation : {{ $article->city}}</p>
                         <p>Date de mise en ligne : {{ $article->created_at}}</p>
                         <p>Date de la dernière modifiction : {{ $article->updated_at}}</p>
 

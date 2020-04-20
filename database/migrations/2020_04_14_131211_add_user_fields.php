@@ -16,6 +16,7 @@ class AddUserFields extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('sexe')->nullable()->after('password');
             $table->date('date_naissance')->nullable()->after('sexe');
+            $table->string('city')->nullable()->after('sexe');
             $table->string('telephone')->nullable()->after('email');
             $table->string('pseudo')->nullable()->after('name');
 

@@ -28,6 +28,9 @@ class CreateArticleRequest extends FormRequest
             'price' => ['numeric','required'],
             'resum' => ['string','required','min:20'],
             'images' => 'required',
+            'city' => ['string','required'],
+            'color' => ['exists:App\Color,id'],
+            'theme' => ['exists:App\Theme,id'],
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg'
         ];
     }
