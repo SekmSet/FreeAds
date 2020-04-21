@@ -3,6 +3,7 @@
 use App\Article;
 use App\Color;
 use App\Image;
+use App\Message;
 use App\Theme;
 use App\User;
 use Illuminate\Database\Seeder;
@@ -23,7 +24,14 @@ class DatabaseSeeder extends Seeder
         factory(Theme::class,10)->create();
         $themes =  Theme::all('id')->pluck('id')->toArray();
 
-        factory(User::class, 20)->create()->each(function ($user) use ($themes, $colors) {
+       // $repeater =  Message::all('repeater_id')->pluck('repeater_id')->toArray();
+
+        factory(User::class, 20)->create()->each(function ($user) use ( $themes, $colors) {
+
+            factory(Message::class, 6)->create([
+                'sender_id' => $user->id,
+            ]);
+
             factory(Article::class,3)->create([
                 'user_id' => $user->id,
                 'color_id' => $colors[array_rand($colors)],
@@ -34,5 +42,6 @@ class DatabaseSeeder extends Seeder
                 ]);
             });
         });
+
     }
 }

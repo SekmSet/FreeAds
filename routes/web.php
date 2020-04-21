@@ -25,3 +25,7 @@ Route::post('/profil/edit', 'Auth\ProfilController@putUpdateUser')->middleware('
 Route::get('/article/search', 'ArticleController@searchAction')->name('searchArticle');
 
 Route::resource('/article','ArticleController');
+
+Route::get('/messages', 'MessageController@index')->middleware('verified')->name('showMessages');
+Route::get('/messages/{id}', 'MessageController@show')->middleware('verified')->name('showMessage');
+

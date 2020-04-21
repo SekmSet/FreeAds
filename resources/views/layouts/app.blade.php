@@ -44,7 +44,7 @@
 
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Messagerie</a>
+                            <a class="nav-link" href="{{route('showMessages')}}">Messagerie</a>
                         </li>
                     </ul>
                     <!-- Right Side Of Navbar -->

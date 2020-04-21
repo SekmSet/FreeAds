@@ -3,18 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Message;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
-        //
+        $users = Auth::user();
+        $messages = Message::where('sender_id',$users->id)->get();
+        print_r($users->id);
+        return view('message.index',[
+            'messages' => $messages
+        ]);
     }
 
     /**

@@ -45,4 +45,14 @@ class User extends Authenticatable implements MustVerifyEmail
     public function colors(){
         return $this->belongsTo(Color::class,'color_id');
     }
+
+    public function sends()
+    {
+        return $this->hasMany(Message::class);
+    }
+
+    public function received()
+    {
+        return $this->hasMany(Message::class);
+    }
 }
