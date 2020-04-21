@@ -83,14 +83,14 @@
                                 <div class="form-group row">
                                     <label for="themes" class="col-md-4 col-form-label text-md-right">{{ __('Mon thème') }}</label>
                                     <div class="col-md-6">
-                                        <input id="colors" type="text" class="form-control" name="themes" value="{{ $user->themes }}" disabled>
+                                        <input id="colors" type="text" class="form-control" name="themes" value="{{ $user->themes->name }}" disabled>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="colors" class="col-md-4 col-form-label text-md-right">{{ __('Ma couleur') }}</label>
                                     <div class="col-md-6">
-                                        <input id="colors" type="text" class="form-control" name="colors" value="{{  $user->colors}}" disabled>
+                                        <input id="colors" type="text" class="form-control" name="colors" value="{{  $user->colors->name}}" disabled>
                                     </div>
                                 </div>
                             </form>

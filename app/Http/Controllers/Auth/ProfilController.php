@@ -18,7 +18,6 @@ class ProfilController extends Controller
         return view('auth.profil', [
             'user' => $user
         ]);
-
     }
 
     public function profilAction(){
@@ -45,8 +44,8 @@ class ProfilController extends Controller
         $name  = $request->get('name');
         $email  = $request->get('email');
         $password  = $request->get('password');
-        $colors  = $request->get('colors');
-        $themes  = $request->get('themes');
+        $color  = $request->get('color_id');
+        $theme  = $request->get('theme_id');
         $city  = $request->get('city');
         $date_naissance  = $request->get('date_naissance');
 
@@ -74,12 +73,13 @@ class ProfilController extends Controller
         if( $city != '' ){
             $user->city = $city;
         }
-        if( $colors != '' ){
-            $user->colors = $colors;
+        if( $color != '' ){
+            $user->color_id = $color;
         }
-        if( $themes != '' ){
-            $user->themes = $themes;
-        }if( $date_naissance != '' ){
+        if( $theme != '' ){
+            $user->theme_id = $theme;
+        }
+        if( $date_naissance != '' ){
             $user->date_naissance = $date_naissance;
         }
 

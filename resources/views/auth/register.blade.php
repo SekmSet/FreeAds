@@ -53,14 +53,14 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="themes" class="col-md-4 col-form-label text-md-right">{{ __('Mon thème') }}</label>
+                            <label for="theme_id" class="col-md-4 col-form-label text-md-right">{{ __('Mon thème') }}</label>
                             <div class="col-md-6">
-                                <select name="themes" id="themes" class="form-control @error('themes') is-invalid @enderror">
+                                <select name="theme_id" id="theme_id" class="form-control @error('theme_id') is-invalid @enderror">
                                     @foreach($themes as $theme)
-                                        <option value="{{$theme->name}}">{{$theme->name}}</option>
+                                        <option value="{{$theme->id}}">{{$theme->name}}</option>
                                     @endforeach
                                 </select>
-                                @error('themes')
+                                @error('theme_id')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -69,14 +69,14 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="colors" class="col-md-4 col-form-label text-md-right">{{ __('Ma couleur') }}</label>
+                            <label for="color_id" class="col-md-4 col-form-label text-md-right">{{ __('Ma couleur') }}</label>
                             <div class="col-md-6">
-                                <select name="colors" id="colors" class="form-control @error('colors') is-invalid @enderror">
+                                <select name="color_id" id="color_id" class="form-control @error('color_id') is-invalid @enderror">
                                     @foreach($colors as $color)
-                                        <option value="{{$color->name}}">{{$color->name}}</option>
+                                        <option value="{{$color->id}}">{{$color->name}}</option>
                                     @endforeach
                                 </select>
-                                @error('colors')
+                                @error('color_id')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

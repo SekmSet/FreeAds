@@ -16,10 +16,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//        $this->call(UserSeeder::class);
-//        $this->call(ColorSeeder::class);
-//        $this->call(ThemeSeeder::class);
-//        $this->call(ArticleSeeder::class);
 
         factory(Color::class,10)->create();
         $colors =  Color::all('id')->pluck('id')->toArray();

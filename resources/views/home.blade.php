@@ -7,9 +7,9 @@
             <div class="card">
                 <div class="card-header"><h2>Nos suggestions conçu spécialement pour vous …</h2>
             </div>
-                <div class="card-body">
+            <div class="card-body">
 
-                </div>
+            </div>
             </div>
         </div>
     </div>

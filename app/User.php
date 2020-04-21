@@ -16,7 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','colors','themes','city'
+        'name', 'email', 'password','color_id','theme_id','city'
     ];
 
     /**
@@ -36,4 +36,13 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function themes(){
+        return $this->belongsTo(Theme::class,'theme_id');
+
+    }
+
+    public function colors(){
+        return $this->belongsTo(Color::class,'color_id');
+    }
 }

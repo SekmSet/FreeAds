@@ -20,10 +20,12 @@ use Illuminate\Support\Str;
 */
 
 $factory->define(User::class, function (Faker $faker) {
-    $colors =  Color::all('name')->pluck('name')->toArray();
-    $themes =  Theme::all('name')->pluck('name')->toArray();
+    $colors =  Color::all('id')->pluck('id')->toArray();
+    $themes =  Theme::all('id')->pluck('id')->toArray();
 
     return [
+        'color_id' => $colors[array_rand($colors)],
+        'theme_id' => $themes[array_rand($themes)],
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'pseudo' => $faker->userName,
@@ -31,8 +33,6 @@ $factory->define(User::class, function (Faker $faker) {
         'sexe' => $faker->randomElement(['F','M']),
         'date_naissance' => $faker->dateTimeThisCentury->format('Y-m-d'),
         'email_verified_at' => now(),
-        'colors' => $colors[array_rand($colors)],
-        'themes' => $themes[array_rand($themes)],
         'city' => $faker->city,
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),

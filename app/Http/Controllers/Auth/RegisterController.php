@@ -59,7 +59,6 @@ class RegisterController extends Controller
         ]);
     }
 
-
     /**
      * Get a validator for an incoming registration request.
      *
@@ -69,11 +68,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'color_id' => ['exists:App\Color,id'],
+            'theme_id' => ['exists:App\Theme,id'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'city' => ['required', 'string', 'max:255',],
-            'colors' => ['required', 'string', 'max:255'],
-            'themes' => ['required', 'string', 'max:255'],
+            'city' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -86,12 +85,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        print_r($data);
+//        die;
         return User::create([
+            'color_id' => $data['color_id'],
+            'theme_id' => $data['theme_id'],
             'name' => $data['name'],
             'email' => $data['email'],
             'city' => $data['city'],
-            'colors' => $data['colors'],
-            'themes' => $data['themes'],
             'password' => Hash::make($data['password']),
         ]);
     }
