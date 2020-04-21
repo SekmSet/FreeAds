@@ -10886,20 +10886,24 @@ body {
   background-color: rgba(255, 140, 0, 0.1);
 }
 
-h1 {
-  font-weight: bold;
-  color: darkorange;
-}
-
 .nav-link {
   color: darkorange !important;
 }
 
 #title_article,
 h2 {
+  font-size: 20px;
+}
+
+h3,
+h2,
+h1 {
   font-weight: bold;
   color: darkorange;
-  font-size: 20px;
+}
+
+h3 {
+  font-size: 15px;
 }
 
 #user_article {
