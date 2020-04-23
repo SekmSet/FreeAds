@@ -28,7 +28,7 @@
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-mail') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email')?? $user->email }}"  autocomplete="email" autofocus>
+                                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email')?? $user->email }}">
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -42,7 +42,7 @@
                                 <label for="date_naissance" class="col-md-4 col-form-label text-md-right">{{ __('Date de naissance') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="date_naissance" type="text" class="form-control @error('date_naissance') is-invalid @enderror" name="date_naissance" value="{{ old('date_naissance')?? $user->date_naissance }}"  placeholder="YYYY-MM-DD" autocomplete="date_naissance" autofocus>
+                                    <input id="date_naissance" type="text" class="form-control @error('date_naissance') is-invalid @enderror" name="date_naissance" value="{{ old('date_naissance')?? $user->date_naissance }}"  placeholder="YYYY-MM-DD">
 
                                     @error('date_naissance')
                                     <span class="invalid-feedback" role="alert">
@@ -56,7 +56,7 @@
                                 <label for="pseudo" class="col-md-4 col-form-label text-md-right">{{ __('Pseudo') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="pseudo" type="text" class="form-control @error('pseudo') is-invalid @enderror" name="pseudo" value="{{ old('pseudo')?? $user->pseudo }}" autocomplete="name" autofocus>
+                                    <input id="pseudo" type="text" class="form-control @error('pseudo') is-invalid @enderror" name="pseudo" value="{{ old('pseudo')?? $user->pseudo }}">
 
                                     @error('pseudo')
                                     <span class="invalid-feedback" role="alert">
@@ -70,7 +70,7 @@
                                 <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Ma ville') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city')?? $user->city }}" autocomplete="name" autofocus>
+                                    <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city')?? $user->city }}">
 
                                     @error('city')
                                     <span class="invalid-feedback" role="alert">
@@ -153,7 +153,7 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password">
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -167,7 +167,7 @@
                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                                 </div>
                             </div>
 

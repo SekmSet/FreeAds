@@ -13,7 +13,7 @@
                                 <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Titre') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title')}}"  autocomplete="title" required autofocus>
+                                    <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title')}}"  required autofocus>
                                     @error('title')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -26,7 +26,7 @@
                                 <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Prix') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}"  autocomplete="price" required autofocus>
+                                    <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required>
                                     @error('price')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -39,7 +39,7 @@
                                 <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Ville') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}"  autocomplete="city" required autofocus>
+                                    <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required>
                                     @error('city')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -52,7 +52,7 @@
                                 <label for="theme" class="col-md-4 col-form-label text-md-right">{{ __('Theme') }}</label>
 
                                 <div class="col-md-6">
-                                    <select name="theme" id="theme-select" class="form-control @error('theme') is-invalid @enderror">
+                                    <select name="theme" id="theme" class="form-control @error('theme') is-invalid @enderror">
                                         @foreach($themes as $theme)
                                             <option value="{{$theme->id}}">{{$theme->name}}</option>
                                         @endforeach
@@ -69,7 +69,7 @@
                                 <label for="color" class="col-md-4 col-form-label text-md-right">{{ __('Couleur') }}</label>
 
                                 <div class="col-md-6">
-                                    <select name="color" id="color-select" class="form-control @error('color') is-invalid @enderror">
+                                    <select name="color" id="color" class="form-control @error('color') is-invalid @enderror">
                                         @foreach($colors as $color)
                                             <option value="{{$color->id}}">{{$color->name}}</option>
                                         @endforeach

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Http\Requests\CreateMessageRequest;
 use App\Message;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +28,7 @@ class MessageController extends Controller
 
         if ($idUserSelected) {
             $userSelected = User::findOrFail($idUserSelected);
+            Message::where('repeater_id', Auth::id())->where('sender_id', $idUserSelected)->whereNull('read_at')->update(['read_at'=> Carbon::now()]);
         }
 
         $users = [];
@@ -69,7 +72,7 @@ class MessageController extends Controller
      * @param Request $request
      * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(CreateMessageRequest $request)
     {
         $content = $request->get('content');
         $sender_id = auth::id();

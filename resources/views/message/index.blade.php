@@ -19,10 +19,10 @@
                     @foreach ($messages as $message)
                         <div class="@if(Auth::id() == $message->sender->id) isme @else notme @endif">
                             @if(Auth::id() == $message->sender->id)
-                                <span id="strong">Moi
+                                <span class="strong">Moi
                                 </span>
                             @else
-                                <span id="strong">{{$message->sender->name}}  </span>
+                                <span class="strong">{{$message->sender->name}}  </span>
                             @endif
                             <br>
                             {{$message->content}}
@@ -36,7 +36,12 @@
                         @csrf
                         <div class="form-group">
                             <label for="content">Mon message</label>
-                            <textarea class="form-control" id="content" name="content" rows="10"></textarea>
+                            <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" rows="10"></textarea>
+                            @error('content')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                             <input type="hidden" name="repeater_id" value="{{$userSelected->id}}">
                             <button >Envoyer</button>
                         </div>

@@ -83,7 +83,7 @@
                                 <div class="form-group row">
                                     <label for="themes" class="col-md-4 col-form-label text-md-right">{{ __('Mon thème') }}</label>
                                     <div class="col-md-6">
-                                        <input id="colors" type="text" class="form-control" name="themes" value="{{ $user->themes->name }}" disabled>
+                                        <input id="themes" type="text" class="form-control" name="themes" value="{{ $user->themes->name }}" disabled>
                                     </div>
                                 </div>
 

@@ -34,19 +34,19 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('article.index')}}">Articles</a>
                         </li>
-                    </ul>
 
-                    <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('article.create')}}">Poster une annonce</a>
                         </li>
+
+
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('messages.index')}}">Messagerie <span class="badge badge-warning">{{$counter_message}}</span></a>
+                            </li>
+                        @endauth
                     </ul>
 
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('messages.index')}}">Messagerie</a>
-                        </li>
-                    </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -61,7 +61,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 

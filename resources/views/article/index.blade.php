@@ -91,7 +91,7 @@
                     <div class="col-md-4">
                         <div class="card mb-4 shadow-sm">
                             <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;" alt="icon article" style="height: 225px; width: 100%; display: block;"
-                                 src="upload/{{$article->images[0]->url}}" data-holder-rendered="true">
+                                 src="{{asset('upload/'.$article->images[0]->url)}}" data-holder-rendered="true">
                             <div class="card-body">
                                 <p class="card-text">
                                 {{ $article->title}}
@@ -100,10 +100,9 @@
                                 </p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary seeMore"><a href="{{route('article.show',['article' =>$article->id])}}">Voir plus</a></button>
+                                        <a class="btn btn-sm btn-outline-secondary seeMore" href="{{route('article.show',['article' =>$article->id])}}">Voir plus</a>
                                      </div>
                                     <small class="text-muted">{{$article->updated_at->diffForHumans()}}</small>
-                                    </small>
                                 </div>
                             </div>
                         </div>
