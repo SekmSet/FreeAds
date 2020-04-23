@@ -10961,3 +10961,57 @@ ul > li {
   color: orangered !important;
 }
 
+button {
+  margin: 10px;
+}
+
+.header_container {
+  background-image: url(/images/people.jpg?ffcbc62cc91f5f9f4d5db4a9058d33bc);
+  margin: 0 0 100px;
+  height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.seeMore {
+  color: darkorange !important;
+  border-color: white !important;
+}
+
+.seeMore:hover {
+  background-color: darkorange !important;
+}
+
+.seeMore > a {
+  color: darkorange !important;
+}
+
+.seeMore > a:hover {
+  color: white !important;
+  font-weight: bold;
+}
+
+.isme {
+  border: solid 1px darkorange;
+  border-radius: 3px;
+  background-color: rgba(255, 140, 0, 0.1);
+  margin: 10px 0 10px 0;
+  padding: 17px 0 17px 54px;
+}
+
+.notme {
+  border: solid 1px darkgrey;
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.4);
+  margin: 10px 0 10px 0;
+  padding: 17px 0 17px 54px;
+}
+
+#strong {
+  font-weight: bold;
+  line-height: 70px;
+  font-size: 15px;
+}
+

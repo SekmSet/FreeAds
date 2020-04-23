@@ -8,7 +8,7 @@
                     <h2>Messages envoyés</h2>
                     @foreach ($users as $user)
                         <div class="list-group">
-                            <a class="list-group-item @if($user->id == $userSelected->id) active @endif" href="{{route('messages.index', ['id' => $user->id])}}">{{$user->name}}</a>
+                            <a class="list-group-item @if($userSelected && $user->id == $userSelected->id) active @endif" href="{{route('messages.index', ['id' => $user->id])}}">{{$user->name}}</a>
                         </div>
                     @endforeach
                 </div>
@@ -17,13 +17,20 @@
                 <div>
                     <h2>Messages envoyés</h2>
                     @foreach ($messages as $message)
-                        <div>
-                            {{$message->sender->name}}<br>
+                        <div class="@if(Auth::id() == $message->sender->id) isme @else notme @endif">
+                            @if(Auth::id() == $message->sender->id)
+                                <span id="strong">Moi
+                                </span>
+                            @else
+                                <span id="strong">{{$message->sender->name}}  </span>
+                            @endif
+                            <br>
                             {{$message->content}}
-                            <hr>
-                        </div>
+                         </div>
+                        <hr>
                     @endforeach
 
+                    @if ($userSelected)
                     <h2>Ecrire un message à {{$userSelected->name}}</h2>
                     <form method="post" action="{{route('messages.store')}}">
                         @csrf
@@ -31,9 +38,10 @@
                             <label for="content">Mon message</label>
                             <textarea class="form-control" id="content" name="content" rows="10"></textarea>
                             <input type="hidden" name="repeater_id" value="{{$userSelected->id}}">
-                            <button>Envoyer</button>
+                            <button >Envoyer</button>
                         </div>
                     </form>
+                    @endif
                 </div>
             </div>
         </div>

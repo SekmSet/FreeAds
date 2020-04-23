@@ -107,8 +107,10 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
+        $user_id = Auth::id();
         return view('article.show',[
-            'article' => $article
+            'article' => $article,
+            'user_id' => $user_id
         ]);
      }
 

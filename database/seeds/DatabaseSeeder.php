@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
                 'color_id' => $colors[array_rand($colors)],
                 'theme_id' => $themes[array_rand($themes)],
             ])->each(function ($article) {
-                factory(Image::class,2)->create([
+                factory(Image::class,3)->create([
                     'article_id' => $article->id,
                 ]);
             });

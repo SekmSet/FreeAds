@@ -20,7 +20,11 @@ class MessageController extends Controller
     {
         $idUser = Auth::id();
         $idUserSelected = $request->get('id');
-        $userSelected = User::findOrFail($idUserSelected);
+        $userSelected = null;
+
+        if($idUserSelected) {
+            $userSelected = User::findOrFail($idUserSelected);
+        }
 
         $users = [];
         $messages = Message::where('sender_id', $idUser)->orWhere('repeater_id', $idUser)->get()->all();

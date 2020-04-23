@@ -42,7 +42,7 @@
                         <p><span class="span_info">Localisation :</span>  {{ $article->city}}</p>
                         <p><span class="span_info">Date de mise en ligne :</span>  {{ $article->created_at}}</p>
                         <p><span class="span_info">Date de la dernière modifiction :</span> {{ $article->updated_at}}</p>
-
+                        <hr>
                         @can('delete', $article)
                             <form method="post" action="{{route('article.destroy',['article'=> $article -> id])}}">
                                 @csrf
@@ -58,12 +58,14 @@
                                 <button> Modifier mon annonce</button>
                             </form>
                         @endcan
-
+                        @if($article->user_id !== $user_id)
                         <form method="get" action="{{route('messages.create')}}">
                             @csrf
                             <input type="hidden" name="article_id" value="{{$article->id}}">
                             <button> Contacter le vendeur</button>
                         </form>
+                        @endif
+
                     </div>
                 </div>
             </div>

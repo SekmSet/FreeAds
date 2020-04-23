@@ -84,32 +84,32 @@
                     </div>
 
                     <hr>
-
-                    <ul id="newArticle">
-                        <li><a href="{{route('article.create')}}">Déposer une annonce</a></li>
-                    </ul>
                 </form>
-                <hr>
-                <div class="card">
-                    <div class="card-header">ARTICLES</div>
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
+
+                <div class="row">
+                    @foreach ($articles as $article)
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;" alt="icon article" style="height: 225px; width: 100%; display: block;"
+                                 src="upload/{{$article->images[0]->url}}" data-holder-rendered="true">
+                            <div class="card-body">
+                                <p class="card-text">
+                                {{ $article->title}}
+                                    <br>
+                                Prix : {{ $article->price}}€
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary seeMore"><a href="{{route('article.show',['article' =>$article->id])}}">Voir plus</a></button>
+                                     </div>
+                                    <small class="text-muted">{{$article->updated_at->diffForHumans()}}</small>
+                                    </small>
+                                </div>
                             </div>
-                        @endif
-
-                        @foreach ($articles as $article)
-                            <p>{{ $article->title}}</p>
-                             <p>{{ $article->price}}€</p>
-
-                            <ul>
-                                <li><a href="{{route('article.show',['article' =>$article->id])}}">See more</a></li>
-                            </ul>
-                            <hr>
-                        @endforeach
-                        {{ $articles->withQueryString()->links() }}
+                        </div>
                     </div>
+                    @endforeach
+                    {{ $articles->withQueryString()->links() }}
                 </div>
             </div>
         </div>
