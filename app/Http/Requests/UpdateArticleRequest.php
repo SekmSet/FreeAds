@@ -24,10 +24,10 @@ class UpdateArticleRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['string','required','min:4'],
-            'price' => ['numeric','required'],
-            'resum' => ['string','required','min:20'],
-            'city' => ['string','required'],
+            'title' => ['string', 'required', 'min:4'],
+            'price' => ['numeric', 'required'],
+            'resum' => ['string', 'required', 'min:20'],
+            'city' => ['string', 'required'],
             'color' => ['exists:App\Color,id'],
             'theme' => ['exists:App\Theme,id'],
 //            'images' => ['image','required'],

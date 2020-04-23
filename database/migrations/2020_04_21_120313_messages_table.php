@@ -16,7 +16,7 @@ class MessagesTable extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->text('content');
-            $table->datetime('read_at');
+            $table->datetime('read_at')->nullable();
             $table->timestamps();
         });
     }

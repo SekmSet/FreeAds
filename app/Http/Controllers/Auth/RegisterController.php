@@ -10,6 +10,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\View\View;
 
 class RegisterController extends Controller
 {
@@ -46,23 +47,23 @@ class RegisterController extends Controller
     /**
      * Show the application registration form.
      *
-     * @return \Illuminate\View\View
+     * @return View
      */
     public function showRegistrationForm()
     {
         $colors = Color::all();
         $themes = Theme::all();
 
-        return view('auth.register',[
+        return view('auth.register', [
             'colors' => $colors,
-            'themes'=>$themes
+            'themes' => $themes,
         ]);
     }
 
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -80,8 +81,8 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
-     * @return \App\User
+     * @param array $data
+     * @return User
      */
     protected function create(array $data)
     {

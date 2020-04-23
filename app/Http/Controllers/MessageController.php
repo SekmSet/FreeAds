@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Article;
 use App\Message;
 use App\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class MessageController extends Controller
 {
@@ -14,7 +16,7 @@ class MessageController extends Controller
      * Display a listing of the resource.
      *
      * @param Request $request
-     * @return \Illuminate\View\View
+     * @return View
      */
     public function index(Request $request)
     {
@@ -22,13 +24,13 @@ class MessageController extends Controller
         $idUserSelected = $request->get('id');
         $userSelected = null;
 
-        if($idUserSelected) {
+        if ($idUserSelected) {
             $userSelected = User::findOrFail($idUserSelected);
         }
 
         $users = [];
         $messages = Message::where('sender_id', $idUser)->orWhere('repeater_id', $idUser)->get()->all();
-        foreach ($messages as $message){
+        foreach ($messages as $message) {
             $users[] = $message->sender;
             $users[] = $message->repeater;
         }
@@ -36,12 +38,12 @@ class MessageController extends Controller
 
         $messages = [];
         if ($idUserSelected) {
-            $messages = Message::whereIn('repeater_id',[$idUser, $idUserSelected])->whereIn('sender_id',[$idUser, $idUserSelected])->get()->all();
+            $messages = Message::whereIn('repeater_id', [$idUser, $idUserSelected])->whereIn('sender_id', [$idUser, $idUserSelected])->get()->all();
         }
 
-        return view('message.index',[
+        return view('message.index', [
             'users' => $collectionUsers,
-            'messages'=> $messages,
+            'messages' => $messages,
             'userSelected' => $userSelected,
         ]);
     }
@@ -49,23 +51,23 @@ class MessageController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\View\View
+     * @return View
      */
     public function create(Request $request)
     {
         $article_id = $request->get('article_id');
-        $article = Article::where('id',$article_id)->first();
+        $article = Article::where('id', $article_id)->first();
 
         return view('message.create', [
-            'article' => $article
+            'article' => $article,
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {

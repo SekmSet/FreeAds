@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -17,7 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','color_id','theme_id','city'
+        'name', 'email', 'password', 'color_id', 'theme_id', 'city',
     ];
 
     /**
@@ -38,13 +37,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function themes(){
-        return $this->belongsTo(Theme::class,'theme_id');
-
+    public function themes()
+    {
+        return $this->belongsTo(Theme::class, 'theme_id');
     }
 
-    public function colors(){
-        return $this->belongsTo(Color::class,'color_id');
+    public function colors()
+    {
+        return $this->belongsTo(Color::class, 'color_id');
     }
 
     public function sends()

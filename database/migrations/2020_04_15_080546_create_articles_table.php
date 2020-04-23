@@ -20,7 +20,6 @@ class CreateArticlesTable extends Migration
             $table->string('city');
             $table->float('price');
             $table->timestamps();
-
         });
     }
 

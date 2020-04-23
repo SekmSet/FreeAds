@@ -19,7 +19,6 @@ class RelationForColorAndThemeUserTable extends Migration
             $table->unsignedBigInteger('theme_id')->after('color_id');
             $table->foreign('theme_id')->references('id')->on('themes');
         });
-
     }
 
     /**

@@ -1,7 +1,6 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-
 use App\Color;
 use App\Theme;
 use App\User;
@@ -20,8 +19,8 @@ use Illuminate\Support\Str;
 */
 
 $factory->define(User::class, function (Faker $faker) {
-    $colors =  Color::all('id')->pluck('id')->toArray();
-    $themes =  Theme::all('id')->pluck('id')->toArray();
+    $colors = Color::all('id')->pluck('id')->toArray();
+    $themes = Theme::all('id')->pluck('id')->toArray();
 
     return [
         'color_id' => $colors[array_rand($colors)],
@@ -30,7 +29,7 @@ $factory->define(User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'pseudo' => $faker->userName,
         'telephone' => $faker->e164PhoneNumber,
-        'sexe' => $faker->randomElement(['F','M']),
+        'sexe' => $faker->randomElement(['F', 'M']),
         'date_naissance' => $faker->dateTimeThisCentury->format('Y-m-d'),
         'email_verified_at' => now(),
         'city' => $faker->city,

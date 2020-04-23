@@ -24,14 +24,14 @@ class CreateArticleRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['string','required','min:4'],
-            'price' => ['numeric','required'],
-            'resum' => ['string','required','min:20'],
+            'title' => ['string', 'required', 'min:4'],
+            'price' => ['numeric', 'required'],
+            'resum' => ['string', 'required', 'min:20'],
             'images' => 'required',
-            'city' => ['string','required'],
+            'city' => ['string', 'required'],
             'color' => ['exists:App\Color,id'],
             'theme' => ['exists:App\Theme,id'],
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg'
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ];
     }
 }

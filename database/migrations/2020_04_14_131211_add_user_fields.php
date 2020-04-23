@@ -19,7 +19,6 @@ class AddUserFields extends Migration
             $table->string('city')->nullable()->after('sexe');
             $table->string('telephone')->nullable()->after('email');
             $table->string('pseudo')->nullable()->after('name');
-
         });
     }
 

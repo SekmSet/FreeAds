@@ -26,10 +26,9 @@ class RelationTableArticle extends Migration
      */
     public function down()
     {
-
         Schema::table('articles', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
             $table->removeColumn('user_id');
-         });
+        });
     }
 }

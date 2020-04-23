@@ -13,8 +13,8 @@ class ArticlePolicy
     /**
      * Determine whether the user can update the model.
      *
-     * @param  \App\User  $user
-     * @param  \App\Article  $article
+     * @param User $user
+     * @param Article $article
      * @return mixed
      */
     public function update(User $user, Article $article)
@@ -25,8 +25,8 @@ class ArticlePolicy
     /**
      * Determine whether the user can delete the model.
      *
-     * @param  \App\User  $user
-     * @param  \App\Article  $article
+     * @param User $user
+     * @param Article $article
      * @return mixed
      */
     public function delete(User $user, Article $article)

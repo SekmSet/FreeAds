@@ -6,21 +6,21 @@ use App\Color;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EditUserRequest;
 use App\Theme;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ProfilController extends Controller
 {
-
-    public function showAction(){
+    public function showAction()
+    {
         $user = Auth::user();
 
         return view('auth.profil', [
-            'user' => $user
+            'user' => $user,
         ]);
     }
 
-    public function profilAction(){
+    public function profilAction()
+    {
         $user = Auth::user();
         $colors = Color::all();
         $themes = Theme::all();
@@ -28,58 +28,57 @@ class ProfilController extends Controller
         return view('auth.change_profil', [
             'user' => $user,
             'colors' => $colors,
-            'themes'=>$themes
+            'themes' => $themes,
         ]);
 //        return redirect()->route('editProfil');
-
     }
 
-    public function putUpdateUser(EditUserRequest $request){
-
+    public function putUpdateUser(EditUserRequest $request)
+    {
         $user = Auth::user();
 
         $telephone = $request->get('telephone');
         $sexe = $request->get('sexe');
-        $pseudo  = $request->get('pseudo');
-        $name  = $request->get('name');
-        $email  = $request->get('email');
-        $password  = $request->get('password');
-        $color  = $request->get('color_id');
-        $theme  = $request->get('theme_id');
-        $city  = $request->get('city');
-        $date_naissance  = $request->get('date_naissance');
+        $pseudo = $request->get('pseudo');
+        $name = $request->get('name');
+        $email = $request->get('email');
+        $password = $request->get('password');
+        $color = $request->get('color_id');
+        $theme = $request->get('theme_id');
+        $city = $request->get('city');
+        $date_naissance = $request->get('date_naissance');
 
-        if( $telephone != '' ){
+        if ($telephone != '') {
             $user->telephone = $telephone;
         }
 
-        if( $sexe != '' ){
+        if ($sexe != '') {
             $user->sexe = $sexe;
         }
 
-        if( $pseudo != '' ){
+        if ($pseudo != '') {
             $user->pseudo = $pseudo;
         }
 
-        if( $name != '' ){
+        if ($name != '') {
             $user->name = $name;
         }
-        if( $email != '' ){
+        if ($email != '') {
             $user->email = $email;
         }
-        if( $password != '' ){
+        if ($password != '') {
             $user->password = $password;
         }
-        if( $city != '' ){
+        if ($city != '') {
             $user->city = $city;
         }
-        if( $color != '' ){
+        if ($color != '') {
             $user->color_id = $color;
         }
-        if( $theme != '' ){
+        if ($theme != '') {
             $user->theme_id = $theme;
         }
-        if( $date_naissance != '' ){
+        if ($date_naissance != '') {
             $user->date_naissance = $date_naissance;
         }
 

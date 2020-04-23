@@ -21,11 +21,9 @@ class ForeignKeyColorArticle extends Migration
      */
     public function down()
     {
-
         Schema::table('articles', function (Blueprint $table) {
             $table->dropForeign(['color_id']);
             $table->removeColumn('color_id');
         });
     }
-
 }

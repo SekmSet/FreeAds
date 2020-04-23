@@ -1,7 +1,6 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-
 use App\Message;
 use App\User;
 use Faker\Generator as Faker;
@@ -13,8 +12,7 @@ $factory->define(Message::class, function (Faker $faker) {
     return [
         'repeater_id' => $users[array_rand($users)],
         'content' => $faker->paragraph($nbSentences = 5, $variableNbSentences = true),
-        'read_at' => $faker->dateTime($max = 'now', $timezone = null),
+        'read_at' => $faker->dateTime(),
 
     ];
-
 });

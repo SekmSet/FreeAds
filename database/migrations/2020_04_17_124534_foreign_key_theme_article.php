@@ -26,5 +26,4 @@ class ForeignKeyThemeArticle extends Migration
             $table->removeColumn('theme_id');
         });
     }
-
 }
