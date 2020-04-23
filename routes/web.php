@@ -26,6 +26,4 @@ Route::get('/article/search', 'ArticleController@searchAction')->name('searchArt
 
 Route::resource('/article','ArticleController');
 
-Route::get('/messages', 'MessageController@index')->middleware('verified')->name('showMessages');
-Route::get('/messages/{id}', 'MessageController@show')->middleware('verified')->name('showMessage');
-
+Route::resource('/messages','MessageController');

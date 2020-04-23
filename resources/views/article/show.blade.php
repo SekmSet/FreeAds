@@ -58,6 +58,12 @@
                                 <button> Modifier mon annonce</button>
                             </form>
                         @endcan
+
+                        <form method="get" action="{{route('messages.create')}}">
+                            @csrf
+                            <input type="hidden" name="article_id" value="{{$article->id}}">
+                            <button> Contacter le vendeur</button>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -48,11 +49,16 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function sends()
     {
-        return $this->hasMany(Message::class);
+        return $this->hasMany(Message::class, 'sender_id');
     }
 
     public function received()
     {
-        return $this->hasMany(Message::class);
+        return $this->hasMany(Message::class, 'repeater_id');
+    }
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class, 'user_id');
     }
 }
