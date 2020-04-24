@@ -40,3 +40,16 @@ The default users's password is : password
 ## Tools used
 
 Mailtrap : https://mailtrap.io/
+
+## Website preview
+
+![home](.github/preview/home.png "Home preview")
+
+![article](.github/preview/article.png "Index article preview")
+
+![article](.github/preview/show.png "Show article preview own article")
+
+![article](.github/preview/show2.png "Show article preview")
+
+![article](.github/preview/message.png "Message preview")
+
