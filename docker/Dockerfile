@@ -11,7 +11,9 @@ WORKDIR /var/www/html/
 COPY --from=builderjs /var/www/html .
 
 RUN apt update && apt install -y unzip
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+
+RUN docker-php-ext-install mysqli pdo pdo_mysql opcache
+COPY ./docker/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install
@@ -24,5 +26,5 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 RUN chmod -R 777 storage public/upload
 RUN a2enmod rewrite
 
-COPY ./docker-php-entrypoint /usr/local/bin/
+COPY ./docker/docker-php-entrypoint /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-php-entrypoint

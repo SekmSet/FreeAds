@@ -10,32 +10,14 @@ services:
 
   app:
     build:
-      dockerfile: ./Dockerfile
+      dockerfile: ./docker/Dockerfile
       context: .
     ports:
       - 5000:80
     depends_on:
       - "db"
-    environment:
-      APP_NAME: "L'BonCoin"
-      APP_ENV: local
-      APP_KEY: base64:0OHYBgMzowQNS0vGKDyPOagdiBBDElBfEH+bV4i2Gvk=
-      APP_DEBUG: 1
-      APP_URL: http://localhost:5000
-
-      DB_CONNECTION: mysql
-      DB_HOST: db
-      DB_PORT: 3306
-      DB_DATABASE: free_ads
-      DB_USERNAME: root
-      DB_PASSWORD: root
-
-      MAIL_DRIVER: smtp
-      MAIL_HOST: smtp.mailtrap.io
-      MAIL_PORT: 2525
-      MAIL_USERNAME: your_mail_username
-      MAIL_PASSWORD: your_mail_pwd
-      MAIL_FROM_ADDRESS: from@example.com
+    env_file:
+      - .env
     volumes:
       - ./:/var/www/html/
 

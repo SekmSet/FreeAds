@@ -8,7 +8,7 @@
 
                     <div class="position-relative overflow-hidden text-center bg-light header_container">
                         <div class="col-md-5 p-lg-5 mx-auto my-5">
-                            <h2 class="display-4 font-weight-normal slog">Bienvenu sur L'BonCoin</h2>
+                            <h2 class="display-4 font-weight-normal slog">Bienvenue sur L'BonCoin</h2>
                         </div>
                     </div>
                     <hr>
