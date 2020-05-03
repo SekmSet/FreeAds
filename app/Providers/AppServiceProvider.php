@@ -30,6 +30,10 @@ class AppServiceProvider extends ServiceProvider
         // https://laravel.com/docs/master/migrations#creating-indexes
         Schema::defaultStringLength(191);
         
+        If (env('APP_ENV') !== 'local') {
+            $this->app['request']->server->set('HTTPS', true);
+        }
+
         view()->composer('*', function(View $view) {
             $messages = Message::where('repeater_id', Auth::id())->whereNull('read_at');
             $view->with('counter_message', $messages->count());
