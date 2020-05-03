@@ -26,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        If (env('APP_ENV') !== 'local') {
+            $this->app['request']->server->set('HTTPS', true);
+        }
+
         view()->composer('*', function(View $view) {
             $messages = Message::where('repeater_id', Auth::id())->whereNull('read_at');
             $view->with('counter_message', $messages->count());
