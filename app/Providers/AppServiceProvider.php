@@ -26,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Fix for MySQL < 5.7.7 and MariaDB < 10.2.2
+        // https://laravel.com/docs/master/migrations#creating-indexes
+        Schema::defaultStringLength(191);
+        
         If (env('APP_ENV') !== 'local') {
             $this->app['request']->server->set('HTTPS', true);
         }
